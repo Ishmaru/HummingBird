@@ -1,0 +1,12 @@
+<nav class="navbar navbar-default row border-bottom" th:fragment="nav">
+  <div class="container-fluid">
+    <div class="navbar-header col-xs-10">
+      <a class="navbar-brand" href="#">
+        <img class="nav-logo" alt="Brand" src="https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Birds-PNG/Humming_Bird_Transparent_PNG_Clipart_Picture.png?m=1507172103" height="72px">
+      </a>
+      <h1>Humming Bird</h1>
+    </div>
+    <button th:if="${true}" type="button" class="btn btn-success navbar-btn  col-xs-1" onclick="window.location.href = '/login';">Login</button>
+    <button th:if="${true}" type="button" class="btn btn-success navbar-btn  col-xs-1" onclick="window.location.href = '/signup';">Sign Up</button>
+  </div>
+</nav>

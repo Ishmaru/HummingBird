@@ -1,0 +1,66 @@
+nav {
+	padding-top: 20px;
+	height: 120px;
+}
+
+.navbar-btn{
+	margin-top: 30px;
+}
+.nav-logo{
+	margin-top: -15px;
+}
+
+.tweet-list, .login-form, .navbar{
+	background-image: linear-gradient(to right, rgba(191, 242, 125, 0.8), rgba(207, 125, 242, 0.56));
+}
+
+.login-form{
+	width: 500px;
+	padding: 100px;
+
+	margin: auto;
+	margin-top: 50px;
+
+}
+
+.login-form h2{
+	margin-top: -20px;
+	margin-bottom: 30px;
+}
+body {
+	background-image: url("https://i.ytimg.com/vi/2Ln2k8KDn4M/maxresdefault.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.tweet-list {
+	margin-top: 50px;
+}
+
+.border-bottom {
+	border-radius: 25px;
+	border-bottom-style: solid;
+	border-bottom-color: #eeeeee;
+}
+
+.tweet-list h2 {
+	margin-bottom: 100px;
+	padding-bottom: 20px;
+}
+
+.tweet-padding{
+	background-color: rgba(245,245,245,0.7);
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 10px;
+}
+
+.each-tweet {
+	margin-bottom: 30px;
+}
+
+.msg {
+	padding: 5px;
+	border-radius: 15px;
+}
