@@ -16,14 +16,20 @@
 	<div class="container">
 		<div class="border-bottom tweet-padding user-padding">
 			<h2>Profile for <span th:if="isSelfPage" th:text="${user.firstName} + ' ' + ${user.lastName}"></span> - <span style="color: #00aced">@<span th:text="${user.username}"></span></span></h2>
-			<h5>Joined <span th:text="${#dates.format(user.createdAt, 'MMMM dd, yyyy')}"></span></h5> 
-			<h5>Email: <span th:text="${user.email}"></span></h5>
-			<form th:action="@{/follow/} + ${user.username}" th:if="${!following && !isSelfPage}" method="post">
-		    	<button style="float:right" type="Submit" class="btn btn-lg btn-success">Follow</button>
-			</form>
-			<form th:action="@{/unfollow/} + ${user.username}" th:if="${following && !isSelfPage}" method="post">
-			    <button style="float:right" type="Submit" class="btn btn-lg btn-primary unfollow_btn">Following</button>
-			</form>
+			<div class="row">
+				<div class="col-xs-8">
+					<h5>Joined <span th:text="${#dates.format(user.createdAt, 'MMMM dd, yyyy')}"></span></h5> 
+					<h5>Email: <span th:text="${user.email}"></span></h5>
+				</div>
+				<div class="col-xs-4">
+					<form th:action="@{/follow/} + ${user.username}" th:if="${!following && !isSelfPage}" method="post">
+				    	<button style="float:right" type="Submit" class="btn btn-lg btn-success">Follow</button>
+					</form>
+					<form th:action="@{/unfollow/} + ${user.username}" th:if="${following && !isSelfPage}" method="post">
+					    <button style="float:right" type="Submit" class="btn btn-lg btn-primary unfollow_btn">Following</button>
+					</form>
+				</div>
+			</div>
 		</div>
 
 	</div>

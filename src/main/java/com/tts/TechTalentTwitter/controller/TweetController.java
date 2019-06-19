@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tts.TechTalentTwitter.model.Tweet;
 import com.tts.TechTalentTwitter.model.User;
@@ -28,11 +29,20 @@ public class TweetController {
     private TweetService tweetService;
     
     @GetMapping(value= {"/tweets", "/"})
-    public String getFeed(Model model){
+    public String getTweets(Model model){
         List<Tweet> tweets = tweetService.findAll();
         model.addAttribute("tweetList", tweets);
         return "feed";
     }
+    
+    @GetMapping(value= {"/feed"})
+    public String getFeed(Model model){
+    	User user = userService.getLoggedInUser();
+        List<Tweet> tweets = tweetService.findAllByUsers(user.getFollowing());
+        model.addAttribute("tweetList", tweets);
+        return "feed";
+    }
+    
     @GetMapping(value = "/tweets/new")
     public String getTweetForm(Model model) {
         model.addAttribute("tweet", new Tweet());
