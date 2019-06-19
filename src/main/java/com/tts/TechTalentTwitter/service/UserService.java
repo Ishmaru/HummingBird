@@ -33,8 +33,6 @@ private BCryptPasswordEncoder bCryptPasswordEncoder;
 		
 	}
 	
-//	@Autowired
-//	private TweetService tweetService;
 	
 	public User findByUsername(String username) {
 	    return userRepository.findByUsername(username);

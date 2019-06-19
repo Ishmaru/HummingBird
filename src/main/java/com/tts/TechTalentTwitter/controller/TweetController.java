@@ -42,13 +42,15 @@ public class TweetController {
     @PostMapping(value = "/tweets")
     public String submitTweetForm(@Valid Tweet tweet, BindingResult bindingResult, Model model) {
         User user = userService.getLoggedInUser();
+        String returnString = "newTweet";
         if (!bindingResult.hasErrors()) {
             tweet.setUser(user);
             tweetService.save(tweet);
             model.addAttribute("successMessage", "Tweet successfully created!");
             model.addAttribute("tweet", new Tweet());
+            returnString = "redirect:/";
         }
-        return "newTweet";
+        return returnString;
     }
     
 	public void SetTweetCounts(List<User> users, Model model) {

@@ -8,4 +8,10 @@ $(document).ready(function() {
     $(this).removeClass('btn-danger');
     $(this).addClass('btn-primary');
   });
+  
+  function redirectTimer(url){
+	  setTimeout(function(){
+		  window.location.replace(url);
+	  }, 3000);
+  }
 })
