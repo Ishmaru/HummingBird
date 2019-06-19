@@ -63,6 +63,7 @@ public class UserController {
     public String getUsers(Model model) {
         List<User> users = userService.findAll();
         model.addAttribute("users", users);
+        model.addAttribute("user", userService.getLoggedInUser());
         SetTweetCounts(users, model);
         
         User loggedInUser = userService.getLoggedInUser();

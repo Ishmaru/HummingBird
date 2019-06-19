@@ -1,18 +1,19 @@
 <nav class="navbar navbar-default row border-bottom" th:fragment="nav">
   <div class="container-fluid">
-    <div class="navbar-header col-xs-9">
-      <a class="navbar-brand" href="/">
+    <div class="navbar-header col-xs-6">
+      <a class="navbar-brand" href="/tweets">
         <img class="nav-logo" alt="Brand" src="https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Birds-PNG/Humming_Bird_Transparent_PNG_Clipart_Picture.png?m=1507172103" height="72px">
       </a>
       <h1>Humming Bird</h1>
     </div>
     <div sec:authorize="isAuthenticated()">
-    	<button th:if="${true}" type="button" class="btn btn-success navbar-btn  col-xs-1" onclick="window.location.href = '/tweets/';">Feed</button>
+        <a th:href="@{'/users/' + ${user.username}}"><h3 th:text="'Welcome ' + ${user.firstName + ' ' + user.lastName + '!'}"class="col-xs-2 welcome"></h3></a>
+    	<button th:if="${true}" type="button" class="btn btn-success navbar-btn  col-xs-1" onclick="window.location.href = '/feed/';">Feed</button>
     	<button th:if="${true}" type="button" class="btn btn-success navbar-btn  col-xs-1" onclick="window.location.href = '/tweets/new';">New Tweet</button>
     	<button th:if="${true}" type="button" class="btn btn-success navbar-btn  col-xs-1" onclick="window.location.href = '/logout';">Logout</button>
     </div>
     <div sec:authorize="!isAuthenticated()">
-        <button th:if="${true}" type="button" class="btn btn-success navbar-btn  col-xs-1" onclick="window.location.href = '/login';">Login</button>
+        <button th:if="${true}" type="button" class="btn btn-success navbar-btn  col-xs-offset-4 col-xs-1" onclick="window.location.href = '/login';">Login</button>
     	<button th:if="${true}" type="button" class="btn btn-success navbar-btn  col-xs-1" onclick="window.location.href = '/signup';">Sign Up</button>
 	</div>
   </div>

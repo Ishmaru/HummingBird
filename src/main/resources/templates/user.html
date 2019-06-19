@@ -30,6 +30,15 @@
 					</form>
 				</div>
 			</div>
+			<div>
+				<div th:if="${isSelfPage}")>
+					<h4>Followed by:</h4>
+					<div class="row" th:each="follower:${user.getFollowers()}">
+						<div class="col-xs-3"><a th:href="@{'/users/' + ${follower.username}}"><span th:text="'@' + ${follower.username}"></span></a></div>
+					</div>
+				</div>
+			</div>
+
 		</div>
 
 	</div>
