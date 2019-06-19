@@ -10,7 +10,7 @@ nav {
 	margin-top: -15px;
 }
 
-.tweet-list, .login-form, .navbar{
+.tweet-list, .login-form, .navbar, .user-list{
 	background-image: linear-gradient(to right, rgba(191, 242, 125, 0.8), rgba(207, 125, 242, 0.56));
 }
 
@@ -44,7 +44,7 @@ body {
 	border-bottom-color: #eeeeee;
 }
 
-.tweet-list h2 {
+.tweet-list h2, .user-list h2 {
 	margin-bottom: 100px;
 	padding-bottom: 20px;
 }
@@ -58,6 +58,10 @@ body {
 
 .each-tweet {
 	margin-bottom: 30px;
+}
+
+.user-padding{
+	padding-bottom: 30px;
 }
 
 .msg {

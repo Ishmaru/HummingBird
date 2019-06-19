@@ -1,5 +1,6 @@
 package com.tts.TechTalentTwitter.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.tts.TechTalentTwitter.model.Tweet;
@@ -18,6 +20,7 @@ import com.tts.TechTalentTwitter.service.UserService;
 
 @Controller
 public class TweetController {
+	
     @Autowired
     private UserService userService;
 	
@@ -35,6 +38,7 @@ public class TweetController {
         model.addAttribute("tweet", new Tweet());
         return "newTweet";
     }
+    
     @PostMapping(value = "/tweets")
     public String submitTweetForm(@Valid Tweet tweet, BindingResult bindingResult, Model model) {
         User user = userService.getLoggedInUser();
@@ -46,4 +50,21 @@ public class TweetController {
         }
         return "newTweet";
     }
+    
+	public void SetTweetCounts(List<User> users, Model model) {
+	    HashMap<String,Integer> tweetCounts = new HashMap<>();
+	    for (User user : users) {
+	        List<Tweet> tweets = tweetService.findAllByUser(user);
+	        tweetCounts.put(user.getUsername(), tweets.size());
+	    }
+	    model.addAttribute("tweetCounts", tweetCounts);
+	}
+	
+	@GetMapping(value = "/tweets/{tag}")
+	public String getTweetsByTag(@PathVariable(value="tag") String tag, Model model) {
+	    List<Tweet> tweets = tweetService.findAllWithTag(tag);
+	    model.addAttribute("tweetList", tweets);
+	    model.addAttribute("tag", tag);
+	    return "taggedTweets";
+	}
 }

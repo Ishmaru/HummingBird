@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <title>Log in</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link rel="stylesheet" href="/custom.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/custom.js"></script>
+</head>
+<body>
+<div th:replace="fragments/navigation :: nav">...</div>
+	<div class="container user-list border-bottom">
+		<h2 class="border-bottom">Users</h2>
+    	<div class="" th:each="user:${users}">
+    	    <a th:href="@{/users/} + ${user.username}">
+	        	<div class="row each-tweet tweet-padding border-bottom">
+		            <div class="col col-sm-6">
+		                <h5 class="mb-1" style="color: #00aced"><i class="fab fa-twitter"></i> @<span th:text="${user.username}"></span></h5>	
+		                <h5 class="mb-1"><span th:text="${user.firstName}"></span> <span th:text="${user.lastName}"></span></h5>
+		            </div>
+		            <div class="col col-sm-2 col-sm-offset-4 text-right">
+		                <h5 class="mb-1"><span th:text="${tweetCounts.get(user.username)}"></span> tweets</h5>
+		                	<form th:action="@{/follow/} + ${user.username}" th:if="${followingStatus.containsKey(user.username) && !followingStatus.get(user.username)}" method="post">
+							    <button type="Submit" class="btn btn-md btn-success">Follow</button>
+							</form>
+							<form th:action="@{/unfollow/} + ${user.username}" th:if="${followingStatus.containsKey(user.username) && followingStatus.get(user.username)}" method="post">
+							    <button type="Submit" class="btn btn-md btn-primary unfollow_btn">Following</button>
+							</form>
+		            </div>
+		        </div>
+		   	 </a>
+		</div>
+    </div>
+</body>
+
+
+
+
+
+
