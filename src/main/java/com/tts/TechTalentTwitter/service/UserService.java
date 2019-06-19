@@ -33,8 +33,8 @@ private BCryptPasswordEncoder bCryptPasswordEncoder;
 		
 	}
 	
-	@Autowired
-	private TweetService tweetService;
+//	@Autowired
+//	private TweetService tweetService;
 	
 	public User findByUsername(String username) {
 	    return userRepository.findByUsername(username);
@@ -61,12 +61,4 @@ private BCryptPasswordEncoder bCryptPasswordEncoder;
 		return findByUsername(loggedInUsername);
 	}
 	
-//	public void SetTweetCounts(List<User> users, Model model) {
-//	    HashMap<String,Integer> tweetCounts = new HashMap<>();
-//	    for (User user : users) {
-//	        List<Tweet> tweets = tweetService.findAllByUser(user);
-//	        tweetCounts.put(user.getUsername(), tweets.size());
-//	    }
-//	    model.addAttribute("tweetCounts", tweetCounts);
-//	}
 }

@@ -12,16 +12,19 @@
 </head>
 <body>
 <div th:replace="fragments/navigation :: nav">...</div>
-    <div class="container tweet-list border-bottom">
-   		<div class="row">
-	        <h2 class="col-xs-12 border-bottom">Tweets</h2>
-	        <div class="col-xs-6 each-tweet" th:each="tweet:${tweetList}">
-		        <div class="tweet-padding border-bottom">
+      <div class="container tweet-list border-bottom">
+		<div class="row">
+			<h2 class="col-xs-12 border-bottom">Tweets</h2>
+	         <div class="col-xs-6 each-tweet" th:each="tweet:${tweetList}">
+	            <div class="tweet-padding border-bottom">
 			        <h5><a th:href="@{'/users/'+${tweet.user.username}}">@<span th:text="${tweet.user.username}"></span></a></h5>
 		            <small><span th:text="${#dates.format(tweet.createdAt, 'M/d/yy')}"></span></small></h5>
 		            <p th:utext="${tweet.message}"></p>
 		        </div>
-	    	</div>
-    	</div>
+		    </div>
+	      	<div class="col-xs-6 each-tweet" th:if="${#lists.isEmpty(tweetList)}">
+	        	<span><strong>No tweets contain this hashtag</strong></span>
+	        </div>
+		</div>
     </div>
 </body>

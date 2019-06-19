@@ -15,9 +15,9 @@
 	
 	<div class="container">
 		<div class="border-bottom tweet-padding user-padding">
-			<h2>Profile for <span th:text="${user.username}"></span>
+			<h2>Profile for <span th:if="isSelfPage" th:text="${user.firstName} + ' ' + ${user.lastName}"></span> - <span style="color: #00aced">@<span th:text="${user.username}"></span></span></h2>
 			<h5>Joined <span th:text="${#dates.format(user.createdAt, 'MMMM dd, yyyy')}"></span></h5> 
-			<span th:text="${user.lastName}"></span> - <span style="color: #00aced">@<span th:text="${user.username}"></span></span></h2>
+			<h5>Email: <span th:text="${user.email}"></span></h5>
 			<form th:action="@{/follow/} + ${user.username}" th:if="${!following && !isSelfPage}" method="post">
 		    	<button style="float:right" type="Submit" class="btn btn-lg btn-success">Follow</button>
 			</form>
@@ -28,22 +28,22 @@
 
 	</div>
 	
-	<div class="container tweet-list border-bottom">
-		<div th:if="${not #lists.isEmpty(tweetList)}">
-	   		<div class="row">
-	   		
-	   		</div>
-	        <h2 class="col-xs-12 border-bottom">Tweets</h2>
-	        <div class="col-xs-6 each-tweet" th:each="tweet:${tweetList}">
-		        <div class="tweet-padding border-bottom">
-			        <h5>@<span th:text="${tweet.user.username}"></span>
+  <div class="container tweet-list border-bottom">
+		<div class="row">
+			<h2 class="col-xs-12 border-bottom" th:text="'Tweets by: @' + ${user.username}"></h2>
+	         <div class="col-xs-6 each-tweet" th:each="tweet:${tweetList}">
+	            <div class="tweet-padding border-bottom">
+			        <h5><a th:href="@{'/users/'+${tweet.user.username}}">@<span th:text="${tweet.user.username}"></span></a></h5>
 		            <small><span th:text="${#dates.format(tweet.createdAt, 'M/d/yy')}"></span></small></h5>
 		            <p th:utext="${tweet.message}"></p>
 		        </div>
-	    	</div>
-	    </div>
-	    <div th:if="${#lists.isEmpty(tweetList)}">
-    		<h2 class="border-bottom">No Recent Tweets</h2>
+		    </div>
+	      	<div class="col-xs-6 each-tweet" th:if="${#lists.isEmpty(tweetList)}">
+	        	<span><strong>No tweets contain this hashtag</strong></span>
+	        </div>
 		</div>
-	</div>
+    </div>
 </body>
+
+
+ 

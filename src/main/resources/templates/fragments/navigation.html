@@ -8,7 +8,7 @@
     </div>
     <div sec:authorize="isAuthenticated()">
     	<button th:if="${true}" type="button" class="btn btn-success navbar-btn  col-xs-1" onclick="window.location.href = '/tweets/';">Feed</button>
-    	<button th:if="${true}" type="button" class="btn btn-success navbar-btn  col-xs-1" onclick="window.location.href = '/tweets/new';">NewTweet</button>
+    	<button th:if="${true}" type="button" class="btn btn-success navbar-btn  col-xs-1" onclick="window.location.href = '/tweets/new';">New Tweet</button>
     	<button th:if="${true}" type="button" class="btn btn-success navbar-btn  col-xs-1" onclick="window.location.href = '/logout';">Logout</button>
     </div>
     <div sec:authorize="!isAuthenticated()">
