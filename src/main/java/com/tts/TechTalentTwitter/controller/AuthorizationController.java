@@ -21,6 +21,7 @@ public class AuthorizationController {
 
     @GetMapping(value="/login")
     public String login(){
+
         return "login";
     }
     

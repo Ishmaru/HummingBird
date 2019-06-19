@@ -7,13 +7,13 @@
       <h1>Humming Bird</h1>
     </div>
     <div sec:authorize="isAuthenticated()">
-        <a th:href="@{'/users/' + ${user.username}}"><h3 th:text="'Welcome ' + ${user.firstName + ' ' + user.lastName + '!'}"class="col-xs-2 welcome"></h3></a>
+        <a th:href="@{'/users/' + ${currUser.username}}"><h3 th:text="'Welcome ' + ${currUser.firstName + ' ' + currUser.lastName + '!'}"class="col-xs-2 welcome"></h3></a>
     	<button th:if="${true}" type="button" class="btn btn-success navbar-btn  col-xs-1" onclick="window.location.href = '/feed/';">Feed</button>
     	<button th:if="${true}" type="button" class="btn btn-success navbar-btn  col-xs-1" onclick="window.location.href = '/tweets/new';">New Tweet</button>
     	<button th:if="${true}" type="button" class="btn btn-success navbar-btn  col-xs-1" onclick="window.location.href = '/logout';">Logout</button>
     </div>
     <div sec:authorize="!isAuthenticated()">
-        <button th:if="${true}" type="button" class="btn btn-success navbar-btn  col-xs-offset-4 col-xs-1" onclick="window.location.href = '/login';">Login</button>
+        <button th:if="${true}" type="button" class="btn btn-success navbar-btn  col-xs-offset-3 col-xs-1" onclick="window.location.href = '/login';">Login</button>
     	<button th:if="${true}" type="button" class="btn btn-success navbar-btn  col-xs-1" onclick="window.location.href = '/signup';">Sign Up</button>
 	</div>
   </div>

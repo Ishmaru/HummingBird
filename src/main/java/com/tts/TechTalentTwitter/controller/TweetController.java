@@ -32,7 +32,7 @@ public class TweetController {
     public String getTweets(Model model){
         List<Tweet> tweets = tweetService.findAll();
         model.addAttribute("tweetList", tweets);
-        model.addAttribute("user", userService.getLoggedInUser());
+        model.addAttribute("currUser", userService.getLoggedInUser());
         return "feed";
     }
     
@@ -40,7 +40,7 @@ public class TweetController {
     public String getFeed(Model model){
     	User user = userService.getLoggedInUser();
         List<Tweet> tweets = tweetService.findAllByUsers(user.getFollowing());
-        model.addAttribute("user", userService.getLoggedInUser());
+        model.addAttribute("currUser", userService.getLoggedInUser());
         model.addAttribute("tweetList", tweets);
         return "feed";
     }
@@ -48,7 +48,7 @@ public class TweetController {
     @GetMapping(value = "/tweets/new")
     public String getTweetForm(Model model) {
         model.addAttribute("tweet", new Tweet());
-        model.addAttribute("user", userService.getLoggedInUser());
+        model.addAttribute("currUser", userService.getLoggedInUser());
         return "newTweet";
     }
     
@@ -78,7 +78,7 @@ public class TweetController {
 	@GetMapping(value = "/tweets/{tag}")
 	public String getTweetsByTag(@PathVariable(value="tag") String tag, Model model) {
 	    List<Tweet> tweets = tweetService.findAllWithTag(tag);
-	    model.addAttribute("user", userService.getLoggedInUser());
+	    model.addAttribute("currUser", userService.getLoggedInUser());
 	    model.addAttribute("tweetList", tweets);
 	    model.addAttribute("tag", tag);
 	    return "taggedTweets";

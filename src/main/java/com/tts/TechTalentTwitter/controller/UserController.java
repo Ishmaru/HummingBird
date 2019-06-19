@@ -29,7 +29,7 @@ public class UserController {
         List<Tweet> tweets = tweetService.findAllByUser(user);
         model.addAttribute("tweetList", tweets);
         model.addAttribute("user", user);
-        
+        model.addAttribute("currUser", userService.getLoggedInUser());
         User loggedInUser = userService.getLoggedInUser();
         List<User> following = loggedInUser.getFollowing();
         boolean isFollowing = false;
@@ -63,7 +63,7 @@ public class UserController {
     public String getUsers(Model model) {
         List<User> users = userService.findAll();
         model.addAttribute("users", users);
-        model.addAttribute("user", userService.getLoggedInUser());
+        model.addAttribute("currUser", userService.getLoggedInUser());
         SetTweetCounts(users, model);
         
         User loggedInUser = userService.getLoggedInUser();
